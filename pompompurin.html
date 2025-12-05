@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo de Estudio Pompompurin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos personalizados para la estética Pompompurin */
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Fondo: Amarillo muy claro, color pastel de Pompompurin */
+            background-color: #fff9e6; /* Creamy Yellow/Lightest Beige */
+            scroll-behavior: smooth;
+        }
+        .text-pompom-main {
+            color: #795548; /* Marrón de Pompompurin */
+        }
+        .bg-pompom-soft {
+            background-color: #ffe082; /* Amarillo suave/Mantequilla */
+        }
+        .border-pompom-soft {
+            border-color: #ffcc80; /* Naranja suave/Melocotón */
+        }
+        .bg-pompom-accent {
+            background-color: #ffb74d; /* Naranja más fuerte, para botones */
+        }
+        .hover-bg-pompom-accent:hover {
+            background-color: #ffa726; /* Tono de hover */
+        }
+        /* Estilos para asegurar que el contenido de la flashcard esté centrado */
+        #flashcard {
+            position: relative; /* Necesario para posicionar la respuesta */
+        }
+        #flashcard-answer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'pompom-main': '#795548',
+                        'pompom-soft': '#ffe082',
+                        'pompom-accent': '#ffb74d',
+                        'pompom-bg': '#fff9e6',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen p-4 sm:p-8">
+
+    <div id="app" class="max-w-5xl mx-auto bg-white shadow-xl rounded-3xl p-6 md:p-10 border-4 border-pompom-soft">
+
+        <header class="mb-8 border-b-2 border-pompom-soft pb-4">
+            <h1 class="text-4xl font-extrabold text-pompom-main tracking-tight">
+                🌼 ¡A Estudiar con Pompompurin! 🍮
+            </h1>
+            <p id="topic-title" class="text-xl text-gray-500 mt-2">
+                Reanimación Neonatal Completa (Bloques A, B, C y D)
+            </p>
+        </header>
+
+        <section id="study-material" class="mb-10 p-4 border border-pompom-soft rounded-xl bg-pompom-bg shadow-inner">
+            <h2 class="text-2xl font-semibold text-pompom-main mb-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-pompom-main" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.414 9.382 5 8 5a4 4 0 000 8h4m-4-8v8m0-8h4m-4 8a4 4 0 110-8 4 4 0 010 8z" />
+                </svg>
+                Contenido de Estudio
+            </h2>
+            <div id="content-body" class="prose max-w-none text-gray-700 leading-relaxed space-y-4">
+                
+                <h3 class="text-xl font-bold text-pompom-main">👶 Bloque A & B: Pasos Iniciales y VPP</h3>
+                <p>El **Minuto de Oro** son los primeros 60 segundos, cubriendo el Bloque A y el inicio del B. Los pasos iniciales (Bloque A) son Calentar/Secar, Estimular, Posicionar y Succionar (si es necesario).</p>
+
+                <h4 class="text-lg font-semibold text-pompom-main">Criterios de paso al Bloque B (VPP)</h4>
+                <p>Se inicia la VPP (Ventilación a Presión Positiva) si el RN presenta:</p>
+                <ul class="list-disc list-inside ml-4 text-sm space-y-1">
+                    <li><span class="font-bold text-red-600">Apnea, jadeo o boqueo.</span></li>
+                    <li><span class="font-bold text-red-600">Frecuencia Cardíaca (FC) &lt; 100 lpm.</span></li>
+                </ul>
+
+                <h4 class="text-lg font-semibold text-pompom-main">Pasos Correctivos (MR. SOPA)</h4>
+                <p>Si la VPP no es efectiva (no hay aumento de FC y/o no hay movimiento torácico), se aplica la secuencia de corrección MR. SOPA:</p>
+                <ul class="list-decimal list-inside ml-4 text-sm space-y-1">
+                    <li>**M**áscara: Ajustar sello.</li>
+                    <li>**R**eposicionar: Vía aérea.</li>
+                    <li>**S**ucción: Boca y nariz.</li>
+                    <li>**O**pen: Abrir la boca.</li>
+                    <li>**P**resión: Aumentarla (máx. 40 cm H₂O a término).</li>
+                    <li>**A**lternativa: Vía aérea alternativa (Tubo ET o Mascarilla Laríngea).</li>
+                </ul>
+
+                <h4 class="text-lg font-semibold text-pompom-main mt-6">Objetivos de Saturación de O₂ (SpO₂)</h4>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-pompom-soft rounded-lg overflow-hidden border border-pompom-accent">
+                        <thead class="bg-pompom-soft">
+                            <tr>
+                                <th class="px-3 py-2 text-left text-xs font-medium text-pompom-main uppercase tracking-wider">Minuto</th>
+                                <th class="px-3 py-2 text-left text-xs font-medium text-pompom-main uppercase tracking-wider">Rango de Saturación (SpO₂)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-pompom-soft text-sm">
+                            <tr><td class="px-3 py-2">1 min</td><td class="px-3 py-2">60%–65%</td></tr>
+                            <tr><td class="px-3 py-2 bg-pompom-bg">5 min</td><td class="px-3 py-2 bg-pompom-bg">80%–85%</td></tr>
+                            <tr><td class="px-3 py-2">10 min</td><td class="px-3 py-2">85%–95%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3 class="text-xl font-bold text-pompom-main mt-8">💪 Bloque C: Compresiones Torácicas</h3>
+                <p>Se pasa al Bloque C si la **FC persiste &lt; 60 lpm** después de al menos 30 segundos de VPP efectiva (y generalmente tras haber asegurado una vía aérea alternativa).</p>
+                
+                <ul class="list-disc list-inside ml-4 text-sm space-y-1">
+                    <li><strong class="text-pompom-accent">Indicación:</strong> FC &lt; 60 lpm.</li>
+                    <li><strong class="text-pompom-accent">Técnica:</strong> Dos pulgares, rodeando el torso del RN.</li>
+                    <li><strong class="text-pompom-accent">Ubicación:</strong> Tercio inferior del esternón, entre la línea de los pezones y el apéndice xifoides.</li>
+                    <li><strong class="text-pompom-accent">Profundidad:</strong> 1/3 del diámetro anteroposterior del tórax.</li>
+                    <li><strong class="text-pompom-accent">Coordinación (Ritmo):</strong> 3 compresiones por cada 1 ventilación (Ritmo: "Uno-y-dos-y-tres-y-ventila-y"). Esto resulta en 90 compresiones y 30 ventilaciones por minuto.</li>
+                    <li><strong class="text-pompom-accent">Oxígeno:</strong> Se debe subir al **100% de O₂** al iniciar las compresiones.</li>
+                    <li><strong class="text-pompom-accent">Evaluación:</strong> Se verifica la FC después de **60 segundos** de compresiones y ventilaciones coordinadas.</li>
+                </ul>
+
+                <h3 class="text-xl font-bold text-pompom-main mt-8">💉 Bloque D: Medicamentos y Expansores</h3>
+                <p>Se pasa al Bloque D si la **FC persiste &lt; 60 lpm** después de **60 segundos** de Compresiones y VPP coordinadas de alta calidad (Bloque C).</p>
+
+                <h4 class="text-lg font-semibold text-pompom-main">Adrenalina (Epinefrina)</h4>
+                <ul class="list-disc list-inside ml-4 text-sm space-y-1">
+                    <li><strong class="text-pompom-accent">Concentración requerida:</strong> 1:10.000 ($0.1 \text{ mg/ml}$).</li>
+                    <li><strong class="text-pompom-accent">Vía preferida:</strong> Intravenosa (IV) a través de un Catéter Venoso Umbilical (CVU) o intraósea.</li>
+                    <li><strong class="text-pompom-accent">Dosis IV inicial:</strong> $0.02 \text{ mg/kg}$ ($0.2 \text{ ml/kg}$).</li>
+                    <li><strong class="text-pompom-accent">Administración:</strong> Rápida, y arrastrada con 3 ml de solución salina normal si es IV. Se repite cada 3 a 5 minutos si la FC sigue &lt; 60 lpm.</li>
+                </ul>
+
+                <h4 class="text-lg font-semibold text-pompom-main">Expansor de Volumen</h4>
+                <p>Se considera si hay pérdida de sangre aguda (antecedentes como placenta previa, etc.) o signos de shock hipovolémico que no responden a la reanimación avanzada.</p>
+                <ul class="list-disc list-inside ml-4 text-sm space-y-1">
+                    <li><strong class="text-pompom-accent">Solución:</strong> Solución salina normal (NaCl al 0.9%) o glóbulos rojos (O Rh negativo).</li>
+                    <li><strong class="text-pompom-accent">Dosis:</strong> $10 \text{ ml/kg}$.</li>
+                    <li><strong class="text-pompom-accent">Administración:</strong> Lenta (5 a 10 minutos), con precaución en prematuros (&lt;32 semanas).</li>
+                </ul>
+
+            </div>
+        </section>
+
+        <section id="quiz-section" class="mt-12 p-6 bg-pompom-soft border-4 border-pompom-accent rounded-3xl shadow-xl">
+            <h2 class="text-2xl font-semibold text-pompom-main mb-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-pompom-main" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M3.636 5.636l.707.707M7.707 10.293a1 1 0 010 1.414l-3 3a1 1 0 00-.293.707v3h3a1 1 0 00.707-.293l3-3a1 1 0 011.414 0l3 3a1 1 0 00.707.293h3v-3a1 1 0 00-.293
